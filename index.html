@@ -1100,23 +1100,30 @@
 
         </h1>
 
-        <form class="contactForm">
+         class="contactForm">
 
-            <input type="text"
-                   placeholder="Your Name">
+            <form action="https://formspree.io/f/mykarajj" method="POST">
 
-            <input type="email"
-                   placeholder="Your Email">
+<input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required>
 
-            <textarea placeholder="Your Message"></textarea>
+<input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required>
 
-            <button type="submit">
+<textarea
+    name="message"
+    placeholder="Your Message"
+    required></textarea>
 
-                Send Message
+<button type="submit">Send Message</button>
 
-            </button>
-
-        </form>
+</form>
 
     </section>
 

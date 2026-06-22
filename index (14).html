@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colonel Alex Bruton – U.S. Army</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C9A84C;
+      --gold2: #E8C96A;
+      --gold3: rgba(201,168,76,0.12);
+      --black: #060708;
+      --dark: #0C0D0F;
+      --dark2: #13151A;
+      --dark3: #1A1D24;
+      --olive: #1C2018;
+      --cream: #F2EDE3;
+      --cream2: #E8E2D6;
+      --white: #FAF8F3;
+      --muted: #6B6B5A;
+      --border: rgba(201,168,76,0.2);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 300;
+      height: 72px; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(6,7,8,0.95); backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+    .nav-emblem {
+      width: 44px; height: 44px; border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 22px; position: relative;
+      background: rgba(201,168,76,0.05);
+    }
+    .nav-emblem::before { content:''; position:absolute; inset:4px; border:1px solid rgba(201,168,76,0.25); }
+    .nav-name { font-family:'Cinzel',serif; font-size:13px; letter-spacing:0.08em; color:var(--white); }
+    .nav-sub { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:0.25em; color:var(--gold); text-transform:uppercase; margin-top:2px; }
+    .nav-links { display:flex; gap:40px; list-style:none; }
+    .nav-links a {
+      font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:0.2em;
+      text-transform:uppercase; color:rgba(250,248,243,0.45); text-decoration:none;
+      transition:color 0.2s; position:relative; padding-bottom:3px;
+    }
+    .nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--gold); transition:width 0.3s; }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-links a:hover::after { width:100%; }
+
+    /* ── HERO ── */
+    .hero {
+      position:relative; height:100vh; min-height:720px;
+      display:flex; align-items:flex-end;
+      overflow:hidden;
+    }
+    .hero-img {
+      position:absolute; inset:0;
+      background: url('Alex__Jp.png') center 15% / cover no-repeat;
+    }
+    .hero-img::after {
+      content:''; position:absolute; inset:0;
+      background:
+        linear-gradient(105deg, rgba(6,7,8,0.92) 0%, rgba(6,7,8,0.6) 45%, rgba(6,7,8,0.1) 100%),
+        linear-gradient(to top, rgba(6,7,8,1) 0%, rgba(6,7,8,0.4) 35%, transparent 65%);
+    }
+    .hero-noise {
+      position:absolute; inset:0; z-index:1; opacity:0.025;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-content {
+      position:relative; z-index:2;
+      width:100%; max-width:1200px; margin:0 auto;
+      padding: 0 56px 80px;
+    }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:12px;
+      border:1px solid var(--border); padding:8px 16px;
+      margin-bottom:32px; background:rgba(201,168,76,0.06);
+    }
+    .hero-badge span { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); }
+    .hero-badge-dot { width:5px; height:5px; background:var(--gold); border-radius:50%; animation:pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.7);} }
+    .hero-portrait {
+      width:100px; height:100px; border-radius:50%;
+      border:2px solid var(--gold);
+      box-shadow: 0 0 0 1px rgba(201,168,76,0.1), 0 0 0 10px rgba(201,168,76,0.05), 0 24px 80px rgba(0,0,0,0.8);
+      overflow:hidden; margin-bottom:20px;
+    }
+    .hero-portrait img { width:100%; height:100%; object-fit:cover; }
+    .hero-stars { color:var(--gold); font-size:14px; letter-spacing:12px; margin-bottom:14px; opacity:0.8; }
+    .hero-firstname { font-family:'Cinzel',serif; font-size:clamp(14px,2vw,20px); font-weight:400; letter-spacing:0.3em; color:rgba(250,248,243,0.5); text-transform:uppercase; }
+    .hero-lastname {
+      font-family:'Cinzel',serif; font-weight:900;
+      font-size:clamp(64px,10vw,130px);
+      letter-spacing:0.04em; color:var(--white);
+      line-height:0.85; display:block;
+      text-shadow: 0 0 80px rgba(201,168,76,0.15);
+    }
+    .hero-lastname em { color:var(--gold); font-style:normal; }
+    .hero-rule { width:100px; height:1px; background:linear-gradient(to right, var(--gold), transparent); margin:22px 0; }
+    .hero-desc { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:rgba(250,248,243,0.5); letter-spacing:0.04em; margin-bottom:40px; max-width:380px; line-height:1.5; }
+    .hero-stats { display:flex; gap:48px; margin-bottom:44px; }
+    .hero-stat { border-left:1px solid var(--border); padding-left:16px; }
+    .hero-stat-n { font-family:'Cinzel',serif; font-size:32px; color:var(--gold); line-height:1; }
+    .hero-stat-l { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(250,248,243,0.35); margin-top:4px; }
+    .hero-btns { display:flex; gap:16px; }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--gold); color:var(--black);
+      font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
+      padding:15px 36px; text-decoration:none; border:none; cursor:pointer;
+      clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+      transition:background 0.2s,transform 0.15s;
+    }
+    .btn-primary:hover { background:var(--gold2); transform:translateY(-2px); }
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:10px;
+      background:transparent; color:var(--white);
+      font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase;
+      padding:14px 36px; text-decoration:none; cursor:pointer;
+      border:1px solid rgba(250,248,243,0.2);
+      clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+      transition:border-color 0.2s,color 0.2s,transform 0.15s;
+    }
+    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+    .hero-scroll {
+      position:absolute; right:56px; bottom:80px; z-index:2;
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+      writing-mode:vertical-lr; color:rgba(250,248,243,0.2);
+      font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:0.25em; text-transform:uppercase;
+    }
+    .hero-scroll::after { content:''; width:1px; height:60px; background:linear-gradient(to bottom,transparent,var(--gold)); margin-top:8px; }
+
+    /* ── SHARED SECTION ── */
+    .section { padding:100px 56px; }
+    .container { max-width:1100px; margin:0 auto; }
+    .eyebrow { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
+    .eyebrow-line { width:36px; height:1px; background:var(--gold); }
+    .eyebrow span { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); }
+    .sec-title { font-family:'Cinzel',serif; font-size:clamp(32px,4vw,52px); font-weight:700; line-height:1.05; }
+    .sec-title-light { color:var(--white); }
+    .sec-title-dark { color:var(--dark); }
+
+    /* ── ABOUT ── */
+    .about { background:var(--olive); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .about-left { }
+    .about-img-wrap {
+      position:relative; margin-top:48px;
+    }
+    .about-img-wrap img { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top; display:block; }
+    .about-img-frame {
+      position:absolute; inset:-10px; border:1px solid var(--border); pointer-events:none; z-index:1;
+    }
+    .about-img-label {
+      position:absolute; bottom:-1px; left:0; right:0;
+      background:linear-gradient(to top, rgba(6,7,8,0.95), transparent);
+      padding:40px 24px 24px;
+      font-family:'Cinzel',serif; font-size:13px; letter-spacing:0.1em; color:var(--gold);
+      z-index:2;
+    }
+    .about-right { padding-top:48px; }
+    .about-text { font-family:'Cormorant Garamond',serif; font-size:19px; line-height:1.8; color:rgba(250,248,243,0.65); margin-bottom:20px; }
+    .about-text + .about-text { border-top:1px solid var(--border); padding-top:20px; }
+    .about-values { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-top:40px; background:var(--border); }
+    .about-value { background:var(--dark2); padding:20px 24px; }
+    .about-value-icon { font-size:20px; margin-bottom:8px; }
+    .about-value-name { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.1em; color:var(--gold); margin-bottom:4px; }
+    .about-value-desc { font-size:13px; color:rgba(250,248,243,0.35); line-height:1.5; }
+
+    /* ── TIMELINE ── */
+    .timeline-section { background:var(--cream); }
+    .timeline-wrap { position:relative; margin-top:60px; }
+    .timeline-spine { position:absolute; left:50%; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent); transform:translateX(-50%); }
+    .tl-items { display:flex; flex-direction:column; gap:0; }
+    .tl-item { display:grid; grid-template-columns:1fr 60px 1fr; align-items:center; gap:0; }
+    .tl-item:nth-child(even) .tl-content { grid-column:3; text-align:left; padding-left:40px; padding-right:0; }
+    .tl-item:nth-child(even) .tl-empty { grid-column:1; }
+    .tl-content { padding:32px 40px 32px 0; text-align:right; }
+    .tl-item:nth-child(even) .tl-content { padding:32px 0 32px 40px; text-align:left; }
+    .tl-node { display:flex; align-items:center; justify-content:center; }
+    .tl-dot {
+      width:14px; height:14px; border-radius:50%;
+      background:var(--dark); border:2px solid var(--gold);
+      box-shadow:0 0 0 4px rgba(201,168,76,0.12), 0 0 16px rgba(201,168,76,0.2);
+      position:relative; z-index:2;
+    }
+    .tl-year { font-family:'Cinzel',serif; font-size:28px; color:var(--gold); margin-bottom:6px; }
+    .tl-role { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--dark); margin-bottom:6px; }
+    .tl-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+
+    /* ── DEPLOYMENTS ── */
+    .deployments { background:var(--dark2); }
+    .dep-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:56px; }
+    .dep-card {
+      position:relative; aspect-ratio:2/3; overflow:hidden;
+      background:var(--dark3); cursor:pointer;
+      display:flex; flex-direction:column; justify-content:flex-end;
+    }
+    .dep-bg {
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:80px; opacity:0.08;
+      transition:opacity 0.4s, transform 0.6s;
+    }
+    .dep-card:hover .dep-bg { opacity:0.15; transform:scale(1.05); }
+    .dep-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(6,7,8,0.97) 0%, rgba(6,7,8,0.4) 50%, transparent 100%);
+    }
+    .dep-num {
+      position:absolute; top:24px; right:24px;
+      font-family:'Cinzel',serif; font-size:48px; color:rgba(201,168,76,0.08); line-height:1;
+      font-weight:900; z-index:1;
+    }
+    .dep-info { position:relative; z-index:2; padding:32px 28px; }
+    .dep-tag { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; opacity:0.7; }
+    .dep-name { font-family:'Cinzel',serif; font-size:30px; color:var(--white); margin-bottom:12px; }
+    .dep-desc { font-size:13px; color:rgba(250,248,243,0.4); line-height:1.6; }
+    .dep-line { width:40px; height:1px; background:var(--gold); margin-top:20px; transition:width 0.3s; }
+    .dep-card:hover .dep-line { width:80px; }
+
+    /* ── AWARDS ── */
+    .awards { background:var(--cream2); }
+    .awards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:56px; }
+    .award-card {
+      background:var(--white); padding:36px 32px;
+      position:relative; overflow:hidden;
+      border-bottom:3px solid transparent;
+      transition:border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .award-card:hover { border-bottom-color:var(--gold); transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,0.1); }
+    .award-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right,var(--gold),transparent); }
+    .award-n { position:absolute; top:20px; right:24px; font-family:'Cinzel',serif; font-size:40px; color:rgba(0,0,0,0.04); font-weight:900; }
+    .award-icon { font-size:28px; margin-bottom:16px; }
+    .award-name { font-family:'Cinzel',serif; font-size:15px; letter-spacing:0.04em; color:var(--dark); margin-bottom:10px; line-height:1.3; }
+    .award-desc { font-size:13px; color:var(--muted); line-height:1.65; }
+    .award-card.featured { background:var(--olive); border-bottom-color:var(--gold); }
+    .award-card.featured .award-name { color:var(--white); }
+    .award-card.featured .award-desc { color:rgba(250,248,243,0.4); }
+    .award-card.featured .award-n { color:rgba(255,255,255,0.04); }
+
+    /* ── GALLERY ── */
+    .gallery { background:var(--dark); }
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:3px; margin-top:48px;
+    }
+    .gallery-item {
+      aspect-ratio:3/4; overflow:hidden; cursor:pointer; position:relative;
+      background:var(--dark3);
+    }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; display:block; }
+    .gallery-item::after {
+      content:''; position:absolute; inset:0;
+      background:rgba(6,7,8,0.3);
+      transition:background 0.3s;
+    }
+    .gallery-item:hover img { transform:scale(1.08); }
+    .gallery-item:hover::after { background:rgba(6,7,8,0); }
+
+    /* ── CONTACT ── */
+    .contact { background:var(--dark2); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:80px; margin-top:56px; align-items:start; }
+    .contact-title { font-family:'Cinzel',serif; font-size:28px; color:var(--white); margin-bottom:14px; }
+    .contact-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:rgba(250,248,243,0.4); line-height:1.6; margin-bottom:40px; }
+    .contact-items { display:flex; flex-direction:column; gap:24px; }
+    .contact-item { display:flex; align-items:flex-start; gap:18px; }
+    .c-icon {
+      width:44px; height:44px; flex-shrink:0;
+      border:1px solid var(--border); background:rgba(201,168,76,0.05);
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; color:var(--gold);
+    }
+    .c-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+    .c-value { font-size:15px; color:rgba(250,248,243,0.7); line-height:1.5; }
+    .form-title { font-family:'Cinzel',serif; font-size:18px; color:var(--white); margin-bottom:24px; letter-spacing:0.04em; }
+    .form-row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+    .f-input, .f-textarea {
+      width:100%; background:rgba(250,248,243,0.04);
+      border:1px solid rgba(250,248,243,0.1); border-bottom:1px solid rgba(201,168,76,0.2);
+      padding:14px 16px; color:var(--white); font-family:'Barlow',sans-serif; font-size:14px;
+      outline:none; transition:border-color 0.2s, background 0.2s;
+    }
+    .f-input::placeholder, .f-textarea::placeholder { color:rgba(250,248,243,0.2); }
+    .f-input:focus, .f-textarea:focus { border-color:var(--gold); background:rgba(201,168,76,0.04); }
+    .f-textarea { resize:vertical; min-height:120px; margin-bottom:16px; }
+    .f-full { width:100%; margin-bottom:12px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background:var(--black); border-top:1px solid var(--border);
+      padding:32px 56px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .footer-left { font-family:'Cinzel',serif; font-size:14px; color:var(--gold); letter-spacing:0.06em; }
+    .footer-mid { font-size:11px; color:rgba(250,248,243,0.2); letter-spacing:0.1em; }
+    .footer-social { display:flex; gap:20px; }
+    .footer-social a {
+      width:36px; height:36px; border:1px solid rgba(250,248,243,0.1);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(250,248,243,0.3); text-decoration:none; font-size:13px;
+      transition:border-color 0.2s, color 0.2s;
+    }
+    .footer-social a:hover { border-color:var(--gold); color:var(--gold); }
+
+    /* ── FADE IN ── */
+    .fade { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .fade.visible { opacity:1; transform:none; }
+
+    /* ── HAMBURGER ── */
+    .nav-burger {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:8px; z-index:400;
+    }
+    .nav-burger span {
+      display:block; width:26px; height:1px; background:var(--white);
+      transition:transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity:0; }
+    .nav-burger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      nav { padding:0 24px; }
+      .nav-burger { display:flex; }
+      .nav-links {
+        display:none; flex-direction:column; gap:0;
+        position:fixed; top:72px; left:0; right:0;
+        background:rgba(6,7,8,0.98); backdrop-filter:blur(24px);
+        border-top:1px solid var(--border);
+        padding:16px 0; z-index:299;
+      }
+      .nav-links.open { display:flex; }
+      .nav-links li { border-bottom:1px solid rgba(201,168,76,0.08); }
+      .nav-links a { display:block; padding:16px 32px; font-size:13px; color:rgba(250,248,243,0.6); }
+      .nav-links a:hover { color:var(--gold); background:rgba(201,168,76,0.05); }
+      .section { padding:70px 24px; }
+      .hero-content { padding:0 24px 64px; }
+      .hero-scroll { display:none; }
+      .about-grid { grid-template-columns:1fr; gap:40px; }
+      .about-img-wrap { max-width:320px; }
+      .timeline-spine { display:none; }
+      .tl-item { grid-template-columns:1fr; }
+      .tl-item:nth-child(even) .tl-content { grid-column:1; text-align:left; padding-left:0; }
+      .tl-node { display:none; }
+      .tl-content { text-align:left; padding:0 0 32px; }
+      .dep-grid { grid-template-columns:1fr; }
+      .awards-grid { grid-template-columns:1fr 1fr; }
+      .gallery-grid { grid-template-columns:repeat(3,1fr); }
+      .contact-grid { grid-template-columns:1fr; gap:48px; }
+      .form-row2 { grid-template-columns:1fr; }
+      footer { flex-direction:column; gap:16px; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-emblem">★</div>
+    <div>
+      <div class="nav-name">Colonel Alex Bruton</div>
+      <div class="nav-sub">U.S. Army · Ranger · Engineer</div>
+    </div>
+  </a>
+  <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#service">Service</a></li>
+    <li><a href="#deployments">Deployments</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-img"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>Currently on Active Defense Contract</span>
+    </div>
+    <div class="hero-portrait">
+      <img src="Alex_2.png" alt="Colonel Alex Bruton" />
+    </div>
+    <div class="hero-stars">★ ★ ★ ★</div>
+    <div class="hero-firstname">Colonel</div>
+    <span class="hero-lastname">Alex <em>Bruton</em></span>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">U.S. Army Ranger · Computer Engineer · 27 Years of Faithful Service</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n">27</div>
+        <div class="hero-stat-l">Years Service</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">3</div>
+        <div class="hero-stat-l">Combat Theaters</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">5+</div>
+        <div class="hero-stat-l">Decorations</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">✉ &nbsp;Contact Officer</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left fade">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span>Background</span></div>
+        <h2 class="sec-title sec-title-light">The Man<br>Behind<br>The Rank</h2>
+        <div class="about-img-wrap" style="margin-top:36px;">
+          <img src="Alex__Jp.png" alt="Colonel Bruton" />
+          <div class="about-img-frame"></div>
+          <div class="about-img-label">Colonel Alex Bruton · U.S. Army</div>
+        </div>
+      </div>
+      <div class="about-right fade">
+        <p class="about-text">Colonel Alex Bruton is a decorated United States Army officer and qualified Computer Engineer with over 27 years of distinguished service. Born in 1974, he has dedicated the better part of his life to the defense of his nation — rising through the ranks through grit, technical mastery, and an unrelenting commitment to those who serve alongside him.</p>
+        <p class="about-text">A Ranger-qualified officer with deep expertise in special operations, military technology systems, and strategic command, Colonel Bruton has led soldiers through some of the most demanding combat environments on earth. His deployments to Iran, Afghanistan, and Oman gave him firsthand experience in diverse and complex operational theaters, where his engineering background proved as vital as his combat leadership. He currently serves on an active defense contract, continuing to protect and serve his nation in a senior advisory capacity.</p>
+        <p class="about-text">In his personal life, he has faced battles just as demanding as any on the battlefield. A widower, he lost his beloved wife to cancer several years ago — a loss that deepened his resolve and his compassion. He is the proud father of a 17-year-old daughter, whom he raises with the same dedication and love he brings to everything he does. Off duty, he is known as a mentor of character, a tireless advocate for veterans and their families, and a living example of the values he has spent a lifetime defending.</p>
+        <div class="about-values">
+          <div class="about-value">
+            <div class="about-value-icon">⚔️</div>
+            <div class="about-value-name">Leadership</div>
+            <div class="about-value-desc">Commanding respect through action, not rank</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">🛡️</div>
+            <div class="about-value-name">Service</div>
+            <div class="about-value-desc">A life given freely in defense of others</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">⭐</div>
+            <div class="about-value-name">Honor</div>
+            <div class="about-value-desc">Integrity in every decision, on and off duty</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">💻</div>
+            <div class="about-value-name">Innovation</div>
+            <div class="about-value-desc">Engineering excellence meets battlefield strategy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE HISTORY -->
+<section class="section timeline-section" id="service">
+  <div class="container">
+    <div class="eyebrow fade"><div class="eyebrow-line"></div><span>Career</span></div>
+    <h2 class="sec-title sec-title-dark fade">Service<br>History</h2>
+    <div class="timeline-wrap">
+      <div class="timeline-spine"></div>
+      <div class="tl-items">
+        <div class="tl-item fade">
+          <div class="tl-content">
+            <div class="tl-year">1997</div>
+            <div class="tl-role">Commissioned Officer</div>
+            <div class="tl-desc">Entered the United States Army as a commissioned officer with a degree in Computer Engineering. Earned Ranger Tab and Airborne wings within first two years.</div>
+          </div>
+          <div class="tl-node"><div class="tl-dot"></div></div>
+          <div></div>
+        </div>
+        <div class="tl-item fade">
+          <div></div>
+          <div class="tl-node"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-year">2005</div>
+            <div class="tl-role">Company Commander</div>
+            <div class="tl-desc">Promoted to Company Commander, leading 180 soldiers across combat and garrison operations. First combat deployment to the Middle East theater.</div>
+          </div>
+        </div>
+        <div class="tl-item fade">
+          <div class="tl-content">
+            <div class="tl-year">2012</div>
+            <div class="tl-role">Battalion Operations Officer</div>
+            <div class="tl-desc">Served as Senior Operations & Technology Officer, integrating advanced computer engineering systems into field operations across allied forces.</div>
+          </div>
+          <div class="tl-node"><div class="tl-dot"></div></div>
+          <div></div>
+        </div>
+        <div class="tl-item fade">
+          <div></div>
+          <div class="tl-node"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-year">2022</div>
+            <div class="tl-role">Colonel — Active Contract</div>
+            <div class="tl-desc">Promoted to Colonel. Currently serving on an active U.S. defense contract in a senior advisory and strategic technology leadership capacity.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPLOYMENTS -->
+<section class="section deployments" id="deployments">
+  <div class="container">
+    <div class="eyebrow fade"><div class="eyebrow-line"></div><span>Field Operations</span></div>
+    <h2 class="sec-title sec-title-light fade">Combat<br>Deployments</h2>
+    <div class="dep-grid">
+      <div class="dep-card fade">
+        <div class="dep-bg">🇮🇷</div>
+        <div class="dep-overlay"></div>
+        <div class="dep-num">01</div>
+        <div class="dep-info">
+          <div class="dep-tag">Middle East Theater</div>
+          <div class="dep-name">Iran</div>
+          <div class="dep-desc">Strategic technology and intelligence operations supporting U.S. national security objectives in the region.</div>
+          <div class="dep-line"></div>
+        </div>
+      </div>
+      <div class="dep-card fade">
+        <div class="dep-bg">🏔️</div>
+        <div class="dep-overlay"></div>
+        <div class="dep-num">02</div>
+        <div class="dep-info">
+          <div class="dep-tag">Central Asia Theater</div>
+          <div class="dep-name">Afghanistan</div>
+          <div class="dep-desc">Combat leadership and special operations command during active conflict. Awarded Bronze Star for actions in theater.</div>
+          <div class="dep-line"></div>
+        </div>
+      </div>
+      <div class="dep-card fade">
+        <div class="dep-bg">🌊</div>
+        <div class="dep-overlay"></div>
+        <div class="dep-num">03</div>
+        <div class="dep-info">
+          <div class="dep-tag">Arabian Peninsula</div>
+          <div class="dep-name">Oman</div>
+          <div class="dep-desc">Joint advisory operations integrating advanced engineering systems across allied forces in the Arabian Peninsula.</div>
+          <div class="dep-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section awards" id="awards">
+  <div class="container">
+    <div class="eyebrow fade"><div class="eyebrow-line"></div><span>Honors & Decorations</span></div>
+    <h2 class="sec-title sec-title-dark fade">Awards &amp;<br>Recognition</h2>
+    <div class="awards-grid">
+      <div class="award-card fade">
+        <div class="award-n">01</div>
+        <div class="award-icon">🏅</div>
+        <div class="award-name">Legion of Merit</div>
+        <div class="award-desc">Awarded for exceptionally meritorious conduct in the performance of outstanding service across three combat theaters spanning 20+ years.</div>
+      </div>
+      <div class="award-card fade">
+        <div class="award-n">02</div>
+        <div class="award-icon">🎖️</div>
+        <div class="award-name">Bronze Star Medal</div>
+        <div class="award-desc">For heroic and meritorious service during combat operations in Afghanistan, demonstrating outstanding leadership under direct enemy fire.</div>
+      </div>
+      <div class="award-card fade">
+        <div class="award-n">03</div>
+        <div class="award-icon">⭐</div>
+        <div class="award-name">Meritorious Service Medal (3rd Award)</div>
+        <div class="award-desc">Recognized three times for superior performance in key command and staff positions, including as Senior Technology & Operations Officer.</div>
+      </div>
+      <div class="award-card fade">
+        <div class="award-n">04</div>
+        <div class="award-icon">🏆</div>
+        <div class="award-name">Army Commendation Medal</div>
+        <div class="award-desc">For distinguished technical contributions integrating advanced computer engineering systems into field operations during deployments to Oman and Iran.</div>
+      </div>
+      <div class="award-card fade">
+        <div class="award-n">05</div>
+        <div class="award-icon">🪖</div>
+        <div class="award-name">Ranger Tab & Master Parachutist Badge</div>
+        <div class="award-desc">Elite qualifications earned through U.S. Army Ranger School and Airborne programs, reflecting the highest standards of combat readiness.</div>
+      </div>
+      <div class="award-card featured fade">
+        <div class="award-n">—</div>
+        <div class="award-icon">🛡️</div>
+        <div class="award-name">27 Years of Faithful Service</div>
+        <div class="award-desc">A career defined not by a single medal, but by decades of unwavering dedication to duty, country, and the soldiers under his command.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="eyebrow fade"><div class="eyebrow-line"></div><span>Visual Record</span></div>
+    <h2 class="sec-title sec-title-light fade">Photo Gallery</h2>
+    <div class="gallery-grid" style="margin-top:48px;">
+      <div class="gallery-item fade"><img src="1.png" alt="Gallery" /></div>
+      <div class="gallery-item fade"><img src="2.jpeg" alt="Gallery" /></div>
+      <div class="gallery-item fade"><img src="4.jpeg" alt="Gallery" /></div>
+      <div class="gallery-item fade"><img src="54.jpeg" alt="Gallery" /></div>
+      <div class="gallery-item fade"><img src="6t.jpeg" alt="Gallery" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="eyebrow fade"><div class="eyebrow-line"></div><span>Get In Touch</span></div>
+    <div class="contact-grid">
+      <div class="fade">
+        <div class="contact-title">Let's Connect</div>
+        <p class="contact-sub">Whether for professional inquiries, speaking engagements, or veteran support initiatives — Colonel Bruton welcomes your message.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icon">✉</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-value">bru88614@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">☎</div>
+            <div>
+              <div class="c-label">Phone</div>
+              <div class="c-value">+1 (626) 297-0831</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label">Location</div>
+              <div class="c-value">3450 Wilshire Blvd, Suite 200<br>Los Angeles, California 90010</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade">
+        <div class="form-title">Send a Message</div>
+        <div id="form-success" style="display:none; padding:20px; border:1px solid var(--gold); background:rgba(201,168,76,0.08); color:var(--gold); font-family:'Barlow Condensed',sans-serif; letter-spacing:0.1em; margin-bottom:16px;">
+          ✔ &nbsp;Message sent successfully! Colonel Bruton will be in touch.
+        </div>
+        <div class="form-row2">
+          <input class="f-input" type="text" name="name" placeholder="Your Name" required />
+          <input class="f-input" type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <input class="f-input f-full" type="text" name="subject" placeholder="Subject" />
+        <textarea class="f-textarea f-full" name="message" placeholder="Your Message" required></textarea>
+        <button class="btn-primary" id="send-btn" onclick="sendMessage(event)">✉ &nbsp;Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">Colonel Alex Bruton</div>
+  <div class="footer-mid">© 2026 All Rights Reserved · Los Angeles, CA</div>
+
+</footer>
+
+<script>
+  function toggleMenu() {
+    const burger = document.getElementById('burger');
+    const links = document.getElementById('nav-links');
+    burger.classList.toggle('open');
+    links.classList.toggle('open');
+  }
+  // Close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('burger').classList.remove('open');
+      document.getElementById('nav-links').classList.remove('open');
+    });
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+  async function sendMessage(e) {
+    e.preventDefault();
+    const btn = document.getElementById('send-btn');
+    const name = document.querySelector('[name="name"]').value;
+    const email = document.querySelector('[name="email"]').value;
+    const subject = document.querySelector('[name="subject"]').value;
+    const message = document.querySelector('[name="message"]').value;
+    if (!name || !email || !message) { alert('Please fill in all required fields.'); return; }
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '0.6';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/xqevkznq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+      if (res.ok) {
+        document.getElementById('form-success').style.display = 'block';
+        document.querySelector('[name="name"]').value = '';
+        document.querySelector('[name="email"]').value = '';
+        document.querySelector('[name="subject"]').value = '';
+        document.querySelector('[name="message"]').value = '';
+        btn.textContent = '✔ Sent!';
+      } else {
+        alert('Something went wrong. Please try again.');
+        btn.textContent = '✉ Send Message';
+        btn.style.opacity = '1';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      alert('Network error. Please try again.');
+      btn.textContent = '✉ Send Message';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
